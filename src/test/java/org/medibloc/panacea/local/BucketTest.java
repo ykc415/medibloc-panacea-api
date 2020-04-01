@@ -43,7 +43,7 @@ public class BucketTest {
 
     @Test
     public void testGetBucketObject() throws PanaceaApiException {
-        Res<BucketObject> bucketObject = restClient.getBucketObject("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g", "key");
+        Res<BucketObject> bucketObject = restClient.getBucketObject("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g","aaaa", "key");
         System.out.println(bucketObject);
         Assert.assertNotNull(bucketObject);
     }

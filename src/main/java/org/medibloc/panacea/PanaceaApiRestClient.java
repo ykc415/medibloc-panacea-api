@@ -43,7 +43,7 @@ public interface PanaceaApiRestClient {
      ****************************** Bucket *******************************
      */
 
-    Res<BucketObject> getBucketObject(String ownerAddr, String objectKey) throws PanaceaApiException;
+    Res<BucketObject> getBucketObject(String ownerAddr, String bucketName, String objectKey) throws PanaceaApiException;
 
     Res<List<BucketObject>> getBucketObjects(String ownerAddr, String bucketName) throws PanaceaApiException;
 

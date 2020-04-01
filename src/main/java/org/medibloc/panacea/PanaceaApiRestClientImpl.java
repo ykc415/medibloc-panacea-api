@@ -109,8 +109,8 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     }
 
     @Override
-    public Res<BucketObject> getBucketObject(String ownerAddr, String objectKey) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getBucketObject(ownerAddr, objectKey));
+    public Res<BucketObject> getBucketObject(String ownerAddr, String bucketName, String objectKey) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getBucketObject(ownerAddr, bucketName, objectKey));
     }
 
     @Override

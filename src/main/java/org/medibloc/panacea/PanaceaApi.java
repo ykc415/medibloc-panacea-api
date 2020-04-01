@@ -79,40 +79,39 @@ public interface PanaceaApi {
 
     @GET("api/v1/bucket/owners")
     Call<Res<List<BucketOwner>>> getOwners();
-    @GET("api/v1/bucket/owner")
-    Call<Res<BucketOwner>> getOwner(@Query("ownerAddr") String ownerAddr);
+    @GET("api/v1/bucket/owners/{ownerAddr}")
+    Call<Res<BucketOwner>> getOwner(@Path("ownerAddr") String ownerAddr);
 
-    @GET("/api/v1/bucket/buckets")
-    Call<Res<List<Bucket>>> getBuckets(@Query("ownerAddr") String ownerAddr);
-    @GET("api/v1/bucket/bucket")
+    @GET("/api/v1/bucket/owners/{ownerAddr}/buckets")
+    Call<Res<List<Bucket>>> getBuckets(@Path("ownerAddr") String ownerAddr);
+    @GET("api/v1/bucket/owners/{ownerAddr}/buckets/{bucketName}")
     Call<Res<Bucket>> getBucket(
-            @Query("ownerAddr") String ownerAddr,
-            @Query("bucketName") String bucketName
+            @Path("ownerAddr") String ownerAddr,
+            @Path("bucketName") String bucketName
     );
 
-    @GET("/api/v1/bucket/objects")
+    @GET("/api/v1/bucket/owners/{ownerAddr}/buckets/{bucketName}/objects")
     Call<Res<List<BucketObject>>> getBucketObjects(
-            @Query("ownerAddr") String ownerAddr,
-            @Query("bucketName") String bucketName
+            @Path("ownerAddr") String ownerAddr,
+            @Path("bucketName") String bucketName
     );
-    @GET("/api/v1/bucket/object")
+    @GET("/api/v1/bucket/owners/{ownerAddr}/buckets/{bucketName}/objects/{objectKey}")
     Call<Res<BucketObject>> getBucketObject(
-            @Query("ownerAddr") String ownerAddr,
-            @Query("objectKey") String objectKey
+            @Path("ownerAddr") String ownerAddr,
+            @Path("bucketName") String bucketName,
+            @Path("objectKey") String objectKey
     );
 
-    @GET("/api/v1/bucket/writers")
+    @GET("/api/v1/bucket/owners/{ownerAddr}/buckets/{bucketName}/writers")
     Call<Res<List<BucketWriter>>> getBucketWriters(
-            @Query("ownerAddr") String ownerAddr,
-            @Query("bucketName") String bucketName
+            @Path("ownerAddr") String ownerAddr,
+            @Path("bucketName") String bucketName
     );
-
-    @GET("/api/v1/bucket/writer")
+    @GET("/api/v1/bucket/owners/{ownerAddr}/buckets/{bucketName}/writers/{writerAddr}")
     Call<Res<BucketWriter>> getBucketWriter(
-            @Query("ownerAddr") String ownerAddr,
-            @Query("bucketName") String bucketName,
-            @Query("writerAddr") String writerAddr
+            @Path("ownerAddr") String ownerAddr,
+            @Path("bucketName") String bucketName,
+            @Path("writerAddr") String writerAddr
     );
-
 
 }
