@@ -36,14 +36,14 @@ public class BucketTest {
 
     @Test
     public void testGetOwner() throws PanaceaApiException {
-        Res<BucketOwner> owner = restClient.getOwner("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
+        Res<BucketOwner> owner = restClient.getOwner("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         System.out.println(owner);
         Assert.assertNotNull(owner);
     }
 
     @Test
     public void testGetBucketObject() throws PanaceaApiException {
-        Res<BucketObject> bucketObject = restClient.getBucketObject("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g","aaaa", "key");
+        Res<BucketObject> bucketObject = restClient.getBucketObject("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm","aaaa", "key");
         System.out.println(bucketObject);
         Assert.assertNotNull(bucketObject);
     }
@@ -51,7 +51,7 @@ public class BucketTest {
     @Test
     public void testGetBucketObjects() throws PanaceaApiException {
         Res<List<BucketObject>> bucketObjects = restClient.getBucketObjects(
-                "panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g",
+                "panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm",
                 "1234"
         );
         System.out.println(bucketObjects);
@@ -60,14 +60,14 @@ public class BucketTest {
 
     @Test
     public void testGetBucketWriters() throws PanaceaApiException {
-        Res<List<BucketWriter>> bucketWriters = restClient.getBucketWriters("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g","1234");
+        Res<List<BucketWriter>> bucketWriters = restClient.getBucketWriters("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm","1234");
         System.out.println(bucketWriters);
         Assert.assertNotNull(bucketWriters);
     }
 
     @Test
     public void testGetBucketWriter() throws PanaceaApiException {
-        Res<BucketWriter> bucketWriter = restClient.getBucketWriter("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g","1234",
+        Res<BucketWriter> bucketWriter = restClient.getBucketWriter("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm","1234",
                 "panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
         System.out.println(bucketWriter);
         Assert.assertNotNull(bucketWriter);
@@ -75,14 +75,14 @@ public class BucketTest {
 
     @Test
     public void testGetBuckets() throws PanaceaApiException {
-        Res<List<Bucket>> buckets = restClient.getBuckets("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
+        Res<List<Bucket>> buckets = restClient.getBuckets("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         System.out.println(buckets);
         Assert.assertNotNull(buckets);
     }
 
     @Test
     public void testGetBucket() throws PanaceaApiException {
-        Res<Bucket> bucket = restClient.getBucket("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g", "1234");
+        Res<Bucket> bucket = restClient.getBucket("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm", "1234");
         System.out.println(bucket);
         Assert.assertNotNull(bucket);
     }
@@ -153,10 +153,6 @@ public class BucketTest {
         value.setWriterAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         value.setKey("key11");
         broadcastMsgSync(msg);
-    }
-
-    @Test
-    public void testUpdateObject() throws PanaceaApiException {
     }
 
 
