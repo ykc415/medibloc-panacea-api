@@ -7,6 +7,7 @@ import okhttp3.Dispatcher;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Converter;
 import retrofit2.Response;
@@ -34,7 +35,12 @@ public class PanaceaApiClientGenerator {
         Dispatcher dispatcher = new Dispatcher();
         dispatcher.setMaxRequestsPerHost(500);
         dispatcher.setMaxRequests(500);
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         sharedClient = new OkHttpClient.Builder()
+//            .addInterceptor(logging)
             .dispatcher(dispatcher)
             .pingInterval(20, TimeUnit.SECONDS)
             .build();
