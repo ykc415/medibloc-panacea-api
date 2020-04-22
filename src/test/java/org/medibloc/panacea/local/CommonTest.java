@@ -12,6 +12,22 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ *
+ - name: ykc
+ type: local
+ address: panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf
+ pubkey: panaceapub1addwnpepqtud78npjfwuglnjrl7aa7lteddyaq3gj6av0yt45k3hxspf4p942l53uq3
+ mnemonic: ""
+ threshold: 0
+ pubkeys: []
+
+
+ **Important** write this mnemonic phrase in a safe place.
+ It is the only way to recover your account if you ever forget your password.
+
+ clarify clutch decline mirror inform choose letter switch tuna fine blur unknown air record material emotion dust awake deputy bundle provide build shoulder cart
+ */
 public class CommonTest {
     private PanaceaApiRestClient restClient = null;
 
@@ -27,7 +43,7 @@ public class CommonTest {
 
     @Test
     public void testGetAccount() throws PanaceaApiException {
-        Account acc = restClient.getAccount("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
+        Account acc = restClient.getAccount("panacea194kmkkrfwyqh72u6wjtf3naj4p75nv4jc380m0");
         System.out.println(acc);
         Assert.assertNotNull(acc);
     }
@@ -57,7 +73,7 @@ public class CommonTest {
 
     @Test
     public void testGetBlockByHeight() throws PanaceaApiException {
-        BlockInfo blockInfo = restClient.getBlockByHeight(123L);
+        BlockInfo blockInfo = restClient.getBlockByHeight(1L);
         System.out.println(blockInfo);
         Assert.assertNotNull(blockInfo);
     }
@@ -89,8 +105,8 @@ public class CommonTest {
         Transfer transfer = new Transfer();
         transfer.setAmount("10000");
         transfer.setDenom("umed");
-        transfer.setFromAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
-        transfer.setToAddress("panacea145tgu5y60qsxvwjykfgd7277kzeqd7y3qqwn4j");
+        transfer.setFromAddress("panacea194kmkkrfwyqh72u6wjtf3naj4p75nv4jc380m0");
+        transfer.setToAddress("panacea19rxcjlz4hqmxrx7kgm0dr3x7gur744z5pwkk9p");
 
         MsgSend msgSend = createMsgSend(transfer);
 

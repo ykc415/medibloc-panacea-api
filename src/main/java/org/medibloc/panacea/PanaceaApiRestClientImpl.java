@@ -9,6 +9,7 @@ import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
+import org.medibloc.panacea.domain.did.DIDDocument;
 import org.medibloc.panacea.domain.model.response.NodeInfoResponse;
 import org.medibloc.panacea.domain.model.response.RecordResponse;
 import org.medibloc.panacea.domain.model.response.Res;
@@ -86,6 +87,11 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
         }
 
         return txResponses;
+    }
+
+    @Override
+    public Res<DIDDocument> resolveDID(String did) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.resolveDID(did));
     }
 
     @Override

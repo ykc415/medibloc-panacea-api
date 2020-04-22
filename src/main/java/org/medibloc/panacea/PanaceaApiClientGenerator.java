@@ -40,7 +40,7 @@ public class PanaceaApiClientGenerator {
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
 
         sharedClient = new OkHttpClient.Builder()
-//            .addInterceptor(logging)
+            .addInterceptor(logging)
             .dispatcher(dispatcher)
             .pingInterval(20, TimeUnit.SECONDS)
             .build();

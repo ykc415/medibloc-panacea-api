@@ -41,7 +41,7 @@ public class Wallet {
             this.addressBytes = Crypto.decodeAddress(this.address);
             byte[] pubKeyBytes = ecKey.getPubKeyPoint().getEncoded(true);
             this.pubKeyForSign = new Pubkey();
-            this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
+            this.pubKeyForSign.setValue(Base64.encodeBase64StringUnChunked(pubKeyBytes));
             this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
         } else {
             throw new IllegalArgumentException("Private key cannot be empty.");
@@ -54,7 +54,7 @@ public class Wallet {
         this.addressBytes = Crypto.decodeAddress(this.address);
         byte[] pubKeyBytes = this.ledgerKey.getPubKey();
         this.pubKeyForSign = new Pubkey();
-        this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
+        this.pubKeyForSign.setValue(Base64.encodeBase64StringUnChunked(pubKeyBytes));
         this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
     }
 

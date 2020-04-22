@@ -8,6 +8,7 @@ import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
+import org.medibloc.panacea.domain.did.DIDDocument;
 import org.medibloc.panacea.domain.model.response.Res;
 
 import java.util.List;
@@ -30,6 +31,15 @@ public interface PanaceaApiRestClient {
 
     List<TxResponse> getTxsByHeight(Long height) throws PanaceaApiException;
 
+    /**
+     ****************************  DID  *********************************
+     */
+
+    Res<DIDDocument> resolveDID(String did) throws PanaceaApiException;
+
+    /**
+     ****************************  AOL  *********************************
+     */
 
     Res<List<Topic>> getTopics(String ownerAddress) throws PanaceaApiException;
 

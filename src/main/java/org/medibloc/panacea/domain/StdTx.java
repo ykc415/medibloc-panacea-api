@@ -45,7 +45,9 @@ public class StdTx {
         sd.setMemo(memo);
         sd.setMsgs(msgs);
         sd.setSequence(String.valueOf(wallet.getSequence()));
-        String sig = Base64.encodeBase64String(wallet.sign(sd));
+
+        byte[] signedBytes = wallet.sign(sd);
+        String sig = Base64.encodeBase64StringUnChunked(signedBytes);
 
         StdSignature stdsig = new StdSignature();
         stdsig.setPubkey(wallet.getPubKeyForSign());
@@ -56,5 +58,4 @@ public class StdTx {
         }
         signatures.add(stdsig);
     }
-
 }

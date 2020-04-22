@@ -7,6 +7,7 @@ import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
+import org.medibloc.panacea.domain.did.DIDDocument;
 import org.medibloc.panacea.domain.model.response.NodeInfoResponse;
 import org.medibloc.panacea.domain.model.response.RecordResponse;
 import org.medibloc.panacea.domain.model.response.Res;
@@ -48,7 +49,16 @@ public interface PanaceaApi {
             @Query("limit") Long limit);
 
     /**
-     ******************************  AOL ********************************
+     ******************************  DID  ********************************
+     */
+
+    @GET("api/v1/did/resolve/{did}")
+    Call<Res<DIDDocument>> resolveDID(
+        @Path("did") String did
+    );
+
+    /**
+     ******************************  AOL  *******************************
      */
 
     @GET("api/v1/aol/{ownerAddr}/topics")

@@ -16,6 +16,22 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+/**
+ *
+ - name: ykc
+ type: local
+ address: panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf
+ pubkey: panaceapub1addwnpepqtud78npjfwuglnjrl7aa7lteddyaq3gj6av0yt45k3hxspf4p942l53uq3
+ mnemonic: ""
+ threshold: 0
+ pubkeys: []
+
+
+ **Important** write this mnemonic phrase in a safe place.
+ It is the only way to recover your account if you ever forget your password.
+
+ clarify clutch decline mirror inform choose letter switch tuna fine blur unknown air record material emotion dust awake deputy bundle provide build shoulder cart
+ */
 public class BucketTest {
     private PanaceaApiRestClient restClient = null;
 
@@ -36,14 +52,14 @@ public class BucketTest {
 
     @Test
     public void testGetOwner() throws PanaceaApiException {
-        Res<BucketOwner> owner = restClient.getOwner("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        Res<BucketOwner> owner = restClient.getOwner("panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf");
         System.out.println(owner);
         Assert.assertNotNull(owner);
     }
 
     @Test
     public void testGetBucketObject() throws PanaceaApiException {
-        Res<BucketObject> bucketObject = restClient.getBucketObject("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm","aaaa", "key");
+        Res<BucketObject> bucketObject = restClient.getBucketObject("panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf","aaaa", "key");
         System.out.println(bucketObject);
         Assert.assertNotNull(bucketObject);
     }
@@ -51,7 +67,7 @@ public class BucketTest {
     @Test
     public void testGetBucketObjects() throws PanaceaApiException {
         Res<List<BucketObject>> bucketObjects = restClient.getBucketObjects(
-                "panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm",
+                "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf",
                 "1234"
         );
         System.out.println(bucketObjects);
@@ -67,22 +83,22 @@ public class BucketTest {
 
     @Test
     public void testGetBucketWriter() throws PanaceaApiException {
-        Res<BucketWriter> bucketWriter = restClient.getBucketWriter("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm","1234",
-                "panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
+        Res<BucketWriter> bucketWriter = restClient.getBucketWriter("panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf","1234",
+                "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf");
         System.out.println(bucketWriter);
         Assert.assertNotNull(bucketWriter);
     }
 
     @Test
     public void testGetBuckets() throws PanaceaApiException {
-        Res<List<Bucket>> buckets = restClient.getBuckets("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        Res<List<Bucket>> buckets = restClient.getBuckets("panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf");
         System.out.println(buckets);
         Assert.assertNotNull(buckets);
     }
 
     @Test
     public void testGetBucket() throws PanaceaApiException {
-        Res<Bucket> bucket = restClient.getBucket("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm", "1234");
+        Res<Bucket> bucket = restClient.getBucket("panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf", "1234");
         System.out.println(bucket);
         Assert.assertNotNull(bucket);
     }
@@ -91,8 +107,8 @@ public class BucketTest {
     public void testCreateBucket() throws PanaceaApiException {
         MsgCreateBucket msg = new MsgCreateBucket();
         MsgCreateBucket.Value value = new MsgCreateBucket.Value();
-        value.setBucketName("123ab");
-        value.setBucketOwner("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setBucketName("123acb");
+        value.setBucketOwner("panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf");
         value.setDescription("test bucket");
         msg.setValue(value);
         broadcastMsgSync(msg);
@@ -159,7 +175,7 @@ public class BucketTest {
     private void broadcastMsgSync(PanaceaTransactionMessage msg) throws PanaceaApiException {
         StdFee fee = new StdFee("umed", "10000", "80000");
 
-        String mnemonic = "giraffe wreck kit enemy anger nephew silk sphere tuna tube lady evil market lizard humor usage sand cattle wedding access wall basket define fresh";
+        String mnemonic = "clarify clutch decline mirror inform choose letter switch tuna fine blur unknown air record material emotion dust awake deputy bundle provide build shoulder cart";
 
         Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, "panacea");
         wallet.ensureWalletIsReady(restClient);
