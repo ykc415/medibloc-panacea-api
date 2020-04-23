@@ -7,7 +7,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.medibloc.panacea.domain.did.PubKey;
 import org.medibloc.panacea.domain.did.Service;
 
 @NoArgsConstructor
@@ -26,7 +25,5 @@ public class MsgAddService implements PanaceaTransactionMessage {
         @JsonProperty("owner_address")
         private String ownerAddress;
         private Service service;
-        @JsonProperty("public_key")
-        private PubKey pubKey;
     }
 }

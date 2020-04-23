@@ -7,14 +7,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import org.medibloc.panacea.domain.did.PubKey;
 
 @NoArgsConstructor
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class MsgDeleteService implements PanaceaTransactionMessage {
-    private String type = "did/MsgCreateDID";
+    private String type = "did/MsgDeleteService";
     private Value value;
 
     @Getter @Setter @ToString

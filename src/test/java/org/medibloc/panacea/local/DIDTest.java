@@ -117,7 +117,6 @@ public class DIDTest {
         Assert.assertEquals(expected, document);
     }
 
-
     @Test
     public void testResolveDID2() throws PanaceaApiException {
         Res<DIDDocument> documentRes = restClient.resolveDID("did:med:AZWAFY1ie3X4imAfiG4M1PoBqxqQAXpKbSi77fMQeJm");
@@ -126,14 +125,16 @@ public class DIDTest {
 
     @Test
     public void testMsgAddPublicKey() throws PanaceaApiException {
-        MsgAddPublicKey.Value value = new MsgAddPublicKey.Value();
-//        value.setDid(document.getId());
-        value.setOwnerAddress("panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf");
+        String did = "did:med:9qWFWcwEPxsk6pVMqU1uoETjmkh38QJGiLhodsjAYcv";
+        String owner = "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf";
 
         PubKey pubkey = new PubKey();
         pubkey.setType("PubKeySecp256k1");
-        pubkey.setValue("A+UtF6oEoBI8zefI4GHqyCU3Ghigk08FbF7Duq2gXg2U");
+        pubkey.setValue("A8flzAVxzKejApVCsBnUmfZlxSSk5QY4LGjbWrRieaf6");
 
+        MsgAddPublicKey.Value value = new MsgAddPublicKey.Value();
+        value.setDid(did);
+        value.setOwnerAddress(owner);
         value.setPubKey(pubkey);
 
         MsgAddPublicKey msg = new MsgAddPublicKey();
@@ -141,26 +142,74 @@ public class DIDTest {
 
         broadcastMsgBlock(msg);
 
-        Res<DIDDocument> documentRes = restClient.resolveDID("did:med:A3ZsbJLF6WPaqfK5Ltuh17iae8faDMFKhDbmAmA9zF3J");
+        Res<DIDDocument> documentRes = restClient.resolveDID(did);
+        System.out.println(documentRes);
+    }
+
+    @Test
+    public void testMsgDeletePublicKey() throws PanaceaApiException {
+        String did = "did:med:9qWFWcwEPxsk6pVMqU1uoETjmkh38QJGiLhodsjAYcv";
+        String owner = "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf";
+
+        PubKey pubkey = new PubKey();  // todo id 로 바꿀까?
+        pubkey.setType("PubKeySecp256k1");
+        pubkey.setValue("A8flzAVxzKejApVCsBnUmfZlxSSk5QY4LGjbWrRieaf6");
+
+        MsgDeletePublicKey.Value value = new MsgDeletePublicKey.Value();
+        value.setDid(did);
+        value.setOwnerAddress(owner);
+        value.setPubKey(pubkey);
+
+        MsgDeletePublicKey msg = new MsgDeletePublicKey();
+        msg.setValue(value);
+
+        broadcastMsgBlock(msg);
+
+        Res<DIDDocument> documentRes = restClient.resolveDID(did);
         System.out.println(documentRes);
     }
 
     @Test
     public void testMsgAddService() throws PanaceaApiException {
-        MsgAddService msg = new MsgAddService();
-        broadcastMsgBlock(msg);
-    }
+        String did = "did:med:9qWFWcwEPxsk6pVMqU1uoETjmkh38QJGiLhodsjAYcv";
+        String owner = "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf";
 
-    @Test
-    public void testMsgDeletePublicKey() throws PanaceaApiException {
-        MsgDeletePublicKey msg = new MsgDeletePublicKey();
+        Service service = new Service();
+        service.setId("hello");
+        service.setType("hub");
+        service.setServiceEndPoint("https://www.naver.com/");
+
+        MsgAddService.Value value = new MsgAddService.Value();
+        value.setDid(did);
+        value.setOwnerAddress(owner);
+        value.setService(service);
+
+        MsgAddService msg = new MsgAddService();
+        msg.setValue(value);
+
         broadcastMsgBlock(msg);
+
+        Res<DIDDocument> documentRes = restClient.resolveDID(did);
+        System.out.println(documentRes);
     }
 
     @Test
     public void testMsgDeleteService() throws PanaceaApiException {
+        String did = "did:med:HwiHmhWAXpkwbtoePfgGyKUsk2hyzyr5wtrRDa1rwsKg";
+        String owner = "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf";
+
+        MsgDeleteService.Value value = new MsgDeleteService.Value();
+        value.setDid(did);
+        value.setOwnerAddress(owner);
+        value.setServiceId("medi");
+
         MsgDeleteService msg = new MsgDeleteService();
+        msg.setValue(value);
+
         broadcastMsgBlock(msg);
+
+        Res<DIDDocument> documentRes = restClient.resolveDID(did);
+        System.out.println(documentRes);
     }
 
     @Test
