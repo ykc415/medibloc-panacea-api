@@ -92,7 +92,7 @@ public class DIDTest {
 
     @Test
     public void testResolveDID() throws PanaceaApiException {
-        Res<DIDDocument> documentRes = restClient.resolveDID("did:med:6jM6AzifPVNLDqLxT1deaakzbgYSuaDArpGY1Qc58Z3k");
+        Res<DIDDocument> documentRes = restClient.resolveDID("did:med:5DpKj5SRr75YsTyhtEzRmvG9N2epYDHgjNJJD9jcfZnx");
         System.out.println(documentRes);
 
         PubKeyWithId pubKey = new PubKeyWithId();
@@ -125,12 +125,12 @@ public class DIDTest {
 
     @Test
     public void testMsgAddPublicKey() throws PanaceaApiException {
-        String did = "did:med:9qWFWcwEPxsk6pVMqU1uoETjmkh38QJGiLhodsjAYcv";
+        String did = "did:med:NHw9RqQR6q74fkPtLubk5tb4tWUaXdznhGNRx2AAFeo";
         String owner = "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf";
 
         PubKey pubkey = new PubKey();
         pubkey.setType("PubKeySecp256k1");
-        pubkey.setValue("A8flzAVxzKejApVCsBnUmfZlxSSk5QY4LGjbWrRieaf6");
+        pubkey.setValue("A2CFVQRopFf2FjtWyTxe6ZhDiYgejXcVv1Wx4kzgk32H");
 
         MsgAddPublicKey.Value value = new MsgAddPublicKey.Value();
         value.setDid(did);
@@ -148,12 +148,12 @@ public class DIDTest {
 
     @Test
     public void testMsgDeletePublicKey() throws PanaceaApiException {
-        String did = "did:med:9qWFWcwEPxsk6pVMqU1uoETjmkh38QJGiLhodsjAYcv";
+        String did = "did:med:NHw9RqQR6q74fkPtLubk5tb4tWUaXdznhGNRx2AAFeo";
         String owner = "panacea1uekh7wzhmpjwvjz9lul7uakcr004d6rwskzfdf";
 
-        PubKey pubkey = new PubKey();  // todo id 로 바꿀까?
+        PubKey pubkey = new PubKey();
         pubkey.setType("PubKeySecp256k1");
-        pubkey.setValue("A8flzAVxzKejApVCsBnUmfZlxSSk5QY4LGjbWrRieaf6");
+        pubkey.setValue("A2CFVQRopFf2FjtWyTxe6ZhDiYgejXcVv1Wx4kzgk32H");
 
         MsgDeletePublicKey.Value value = new MsgDeletePublicKey.Value();
         value.setDid(did);
@@ -214,10 +214,12 @@ public class DIDTest {
 
     @Test
     public void testMsgRevokeDID() throws PanaceaApiException {
+        String did = "did:med:2nyj4Egju9DGP6vjgnVr1fH6n9nXq455rY2dWKGGYsrS";
+
         MsgRevokeDID msg = new MsgRevokeDID();
 
         MsgRevokeDID.Value value = new MsgRevokeDID.Value();
-        value.setDid("did:med:ComkpVfvfg7eHHJ8nRPXrHGujtvL9TvDf3EMtrHmpYvV");
+        value.setDid(did);
 
         String mnemonic = "clarify clutch decline mirror inform choose letter switch tuna fine blur unknown air record material emotion dust awake deputy bundle provide build shoulder cart";
         Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, "panacea");
@@ -228,7 +230,7 @@ public class DIDTest {
 
         broadcastMsgBlock(msg);
 
-        Res<DIDDocument> documentRes = restClient.resolveDID("did:med:ComkpVfvfg7eHHJ8nRPXrHGujtvL9TvDf3EMtrHmpYvV");
+        Res<DIDDocument> documentRes = restClient.resolveDID(did);
         System.out.println(documentRes);
     }
 
